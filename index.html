@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="shortcut icon" href="data:,"> <!-- to get rid of annoying favicon error in console -->
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta charset="utf-8">
+    <title>Zudoku</title>
+    <link rel="stylesheet" href="css/default.css">
+    <script src='lib/random.js'></script>
+    <script src='lib/helpers/data_type_abstractions.js'></script>
+  </head>
+  <body>
+    <div id="_soc_app_">
+      <table class="sudoku">
+        
+        <!-- TOP -->
+        <tr id="row_0">
+          <td><button id="0_0" class="block0" data-block="block0" data-row="0" data-col="0" onclick="setActive(this)"></button></td>
+          <td><button id="0_1" class="block0" data-block="block0" data-row="0" data-col="1" onclick="setActive(this)"></button></td>
+          <td><button id="0_2" class="block0" data-block="block0" data-row="0" data-col="2" onclick="setActive(this)"></button></td>
+
+          <td><button id="0_3" class="block1" data-block="block1" data-row="0" data-col="3" onclick="setActive(this)"></button></td>
+          <td><button id="0_4" class="block1" data-block="block1" data-row="0" data-col="4" onclick="setActive(this)"></button></td>
+          <td><button id="0_5" class="block1" data-block="block1" data-row="0" data-col="5" onclick="setActive(this)"></button></td>
+
+          <td><button id="0_6" class="block2" data-block="block2" data-row="0" data-col="6" onclick="setActive(this)"></button></td>
+          <td><button id="0_7" class="block2" data-block="block2" data-row="0" data-col="7" onclick="setActive(this)"></button></td>
+          <td><button id="0_8" class="block2" data-block="block2" data-row="0" data-col="8" onclick="setActive(this)"></button></td>
+        </tr>
+        <tr id="row_1">
+          <td><button id="1_0" class="block0" data-block="block0" data-row="1" data-col="0" onclick="setActive(this)"></button></td>
+          <td><button id="1_1" class="block0" data-block="block0" data-row="1" data-col="1" onclick="setActive(this)"></button></td>
+          <td><button id="1_2" class="block0" data-block="block0" data-row="1" data-col="2" onclick="setActive(this)"></button></td>
+
+          <td><button id="1_3" class="block1" data-block="block1" data-row="1" data-col="3" onclick="setActive(this)"></button></td>
+          <td><button id="1_4" class="block1" data-block="block1" data-row="1" data-col="4" onclick="setActive(this)"></button></td>
+          <td><button id="1_5" class="block1" data-block="block1" data-row="1" data-col="5" onclick="setActive(this)"></button></td>
+
+          <td><button id="1_6" class="block2" data-block="block2" data-row="1" data-col="6" onclick="setActive(this)"></button></td>
+          <td><button id="1_7" class="block2" data-block="block2" data-row="1" data-col="7" onclick="setActive(this)"></button></td>
+          <td><button id="1_8" class="block2" data-block="block2" data-row="1" data-col="8" onclick="setActive(this)"></button></td>
+        </tr>
+        <tr id="row_2">
+          <td><button id="2_0" class="block0" data-block="block0" data-row="2" data-col="0" onclick="setActive(this)"></button></td>
+          <td><button id="2_1" class="block0" data-block="block0" data-row="2" data-col="1" onclick="setActive(this)"></button></td>
+          <td><button id="2_2" class="block0" data-block="block0" data-row="2" data-col="2" onclick="setActive(this)"></button></td>
+
+          <td><button id="2_3" class="block1" data-block="block1" data-row="2" data-col="3" onclick="setActive(this)"></button></td>
+          <td><button id="2_4" class="block1" data-block="block1" data-row="2" data-col="4" onclick="setActive(this)"></button></td>
+          <td><button id="2_5" class="block1" data-block="block1" data-row="2" data-col="5" onclick="setActive(this)"></button></td>
+
+          <td><button id="2_6" class="block2" data-block="block2" data-row="2" data-col="6" onclick="setActive(this)"></button></td>
+          <td><button id="2_7" class="block2" data-block="block2" data-row="2" data-col="7" onclick="setActive(this)"></button></td>
+          <td><button id="2_8" class="block2" data-block="block2" data-row="2" data-col="8" onclick="setActive(this)"></button></td>
+        </tr>
+        
+        <!-- MIDDLE -->
+        <tr id="row_3">
+          <td><button id="3_0" class="block3" data-block="block3" data-row="3" data-col="0" onclick="setActive(this)"></button></td>
+          <td><button id="3_1" class="block3" data-block="block3" data-row="3" data-col="1" onclick="setActive(this)"></button></td>
+          <td><button id="3_2" class="block3" data-block="block3" data-row="3" data-col="2" onclick="setActive(this)"></button></td>
+
+          <td><button id="3_3" class="block4" data-block="block4" data-row="3" data-col="3" onclick="setActive(this)"></button></td>
+          <td><button id="3_4" class="block4" data-block="block4" data-row="3" data-col="4" onclick="setActive(this)"></button></td>
+          <td><button id="3_5" class="block4" data-block="block4" data-row="3" data-col="5" onclick="setActive(this)"></button></td>
+
+          <td><button id="3_6" class="block5" data-block="block5" data-row="3" data-col="6" onclick="setActive(this)"></button></td>
+          <td><button id="3_7" class="block5" data-block="block5" data-row="3" data-col="7" onclick="setActive(this)"></button></td>
+          <td><button id="3_8" class="block5" data-block="block5" data-row="3" data-col="8" onclick="setActive(this)"></button></td>
+        </tr>
+        <tr id="row_4">
+          <td><button id="4_0" class="block3" data-block="block3" data-row="4" data-col="0" onclick="setActive(this)"></button></td>
+          <td><button id="4_1" class="block3" data-block="block3" data-row="4" data-col="1" onclick="setActive(this)"></button></td>
+          <td><button id="4_2" class="block3" data-block="block3" data-row="4" data-col="2" onclick="setActive(this)"></button></td>
+
+          <td><button id="4_3" class="block4" data-block="block4" data-row="4" data-col="3" onclick="setActive(this)"></button></td>
+          <td><button id="4_4" class="block4" data-block="block4" data-row="4" data-col="4" onclick="setActive(this)"></button></td>
+          <td><button id="4_5" class="block4" data-block="block4" data-row="4" data-col="5" onclick="setActive(this)"></button></td>
+
+          <td><button id="4_6" class="block5" data-block="block5" data-row="4" data-col="6" onclick="setActive(this)"></button></td>
+          <td><button id="4_7" class="block5" data-block="block5" data-row="4" data-col="7" onclick="setActive(this)"></button></td>
+          <td><button id="4_8" class="block5" data-block="block5" data-row="4" data-col="8" onclick="setActive(this)"></button></td>
+        </tr>
+        <tr id="row_5">
+          <td><button id="5_0" class="block3" data-block="block3" data-row="5" data-col="0" onclick="setActive(this)"></button></td>
+          <td><button id="5_1" class="block3" data-block="block3" data-row="5" data-col="1" onclick="setActive(this)"></button></td>
+          <td><button id="5_2" class="block3" data-block="block3" data-row="5" data-col="2" onclick="setActive(this)"></button></td>
+
+          <td><button id="5_3" class="block4" data-block="block4" data-row="5" data-col="3" onclick="setActive(this)"></button></td>
+          <td><button id="5_4" class="block4" data-block="block4" data-row="5" data-col="4" onclick="setActive(this)"></button></td>
+          <td><button id="5_5" class="block4" data-block="block4" data-row="5" data-col="5" onclick="setActive(this)"></button></td>
+
+          <td><button id="5_6" class="block5" data-block="block5" data-row="5" data-col="6" onclick="setActive(this)"></button></td>
+          <td><button id="5_7" class="block5" data-block="block5" data-row="5" data-col="7" onclick="setActive(this)"></button></td>
+          <td><button id="5_8" class="block5" data-block="block5" data-row="5" data-col="8" onclick="setActive(this)"></button></td>
+        </tr>
+        
+        <!-- BOTTOM -->
+        <tr id="row_3">
+          <td><button id="6_0" class="block6" data-block="block6" data-row="6" data-col="0" onclick="setActive(this)"></button></td>
+          <td><button id="6_1" class="block6" data-block="block6" data-row="6" data-col="1" onclick="setActive(this)"></button></td>
+          <td><button id="6_2" class="block6" data-block="block6" data-row="6" data-col="2" onclick="setActive(this)"></button></td>
+
+          <td><button id="6_3" class="block7" data-block="block7" data-row="6" data-col="3" onclick="setActive(this)"></button></td>
+          <td><button id="6_4" class="block7" data-block="block7" data-row="6" data-col="4" onclick="setActive(this)"></button></td>
+          <td><button id="6_5" class="block7" data-block="block7" data-row="6" data-col="5" onclick="setActive(this)"></button></td>
+
+          <td><button id="6_6" class="block8" data-block="block8" data-row="6" data-col="6" onclick="setActive(this)"></button></td>
+          <td><button id="6_7" class="block8" data-block="block8" data-row="6" data-col="7" onclick="setActive(this)"></button></td>
+          <td><button id="6_8" class="block8" data-block="block8" data-row="6" data-col="8" onclick="setActive(this)"></button></td>
+        </tr>
+        <tr id="row_4">
+          <td><button id="7_0" class="block6" data-block="block6" data-row="7" data-col="0" onclick="setActive(this)"></button></td>
+          <td><button id="7_1" class="block6" data-block="block6" data-row="7" data-col="1" onclick="setActive(this)"></button></td>
+          <td><button id="7_2" class="block6" data-block="block6" data-row="7" data-col="2" onclick="setActive(this)"></button></td>
+
+          <td><button id="7_3" class="block7" data-block="block7" data-row="7" data-col="3" onclick="setActive(this)"></button></td>
+          <td><button id="7_4" class="block7" data-block="block7" data-row="7" data-col="4" onclick="setActive(this)"></button></td>
+          <td><button id="7_5" class="block7" data-block="block7" data-row="7" data-col="5" onclick="setActive(this)"></button></td>
+
+          <td><button id="7_6" class="block8" data-block="block8" data-row="7" data-col="6" onclick="setActive(this)"></button></td>
+          <td><button id="7_7" class="block8" data-block="block8" data-row="7" data-col="7" onclick="setActive(this)"></button></td>
+          <td><button id="7_8" class="block8" data-block="block8" data-row="7" data-col="8" onclick="setActive(this)"></button></td>
+        </tr>
+        <tr id="row_5">
+          <td><button id="8_0" class="block6" data-block="block6" data-row="8" data-col="0" onclick="setActive(this)"></button></td>
+          <td><button id="8_1" class="block6" data-block="block6" data-row="8" data-col="1" onclick="setActive(this)"></button></td>
+          <td><button id="8_2" class="block6" data-block="block6" data-row="8" data-col="2" onclick="setActive(this)"></button></td>
+
+          <td><button id="8_3" class="block7" data-block="block7" data-row="8" data-col="3" onclick="setActive(this)"></button></td>
+          <td><button id="8_4" class="block7" data-block="block7" data-row="8" data-col="4" onclick="setActive(this)"></button></td>
+          <td><button id="8_5" class="block7" data-block="block7" data-row="8" data-col="5" onclick="setActive(this)"></button></td>
+
+          <td><button id="8_6" class="block8" data-block="block8" data-row="8" data-col="6" onclick="setActive(this)"></button></td>
+          <td><button id="8_7" class="block8" data-block="block8" data-row="8" data-col="7" onclick="setActive(this)"></button></td>
+          <td><button id="8_8" class="block8" data-block="block8" data-row="8" data-col="8" onclick="setActive(this)"></button></td>
+        </tr>
+        <!-- play / mark toggle button -->
+        <tr>
+          <td colspan="8" align="right"></td><td><button id="toggleState" onclick="togglePlayFn(this)">p</button></td>
+        </tr>
+        <!-- Number buttons -->
+        <tr>
+          <td><button id="p1" onclick="play(1)">1</button></td>
+          <td><button id="p2" onclick="play(2)">2</button></td>
+          <td><button id="p3" onclick="play(3)">3</button></td>
+          <td><button id="p4" onclick="play(4)">4</button></td>
+          <td><button id="p5" onclick="play(5)">5</button></td>
+          <td><button id="p6" onclick="play(6)">6</button></td>
+          <td><button id="p7" onclick="play(7)">7</button></td>
+          <td><button id="p8" onclick="play(8)">8</button></td>
+          <td><button id="p9" onclick="play(9)">9</button></td>
+        </tr>
+      </table>
+    </div>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
